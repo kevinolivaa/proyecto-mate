@@ -12,7 +12,7 @@ function App() {
 
   const enviarPedidoWhatsApp = () => {
     // RECORDA CAMBIAR ESTO POR TU NUMERO REAL
-    const numeroTelefono = "549351XXXXXXX"; 
+    const numeroTelefono = "5493543695373"; 
     
     let mensaje = "¡Hola Modo Mate! Quiero encargar el siguiente pedido:%0A%0A";
     
