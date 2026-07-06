@@ -11,21 +11,22 @@ function App() {
   const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
 
   const enviarPedidoWhatsApp = () => {
-    // RECORDA CAMBIAR ESTO POR TU NUMERO REAL
     const numeroTelefono = "5493543695373"; 
-    
-    let mensaje = "¡Hola Modo Mate! Quiero encargar el siguiente pedido:%0A%0A";
+    let mensaje = "¡Hola Modo Mate! Quiero encargar el siguiente pedido:\n\n";
     
     carrito.forEach((item) => {
-      mensaje += `- ${item.cantidad}x ${item.nombre} ($${item.precio * item.cantidad})%0A`;
+      mensaje += `- ${item.cantidad}x ${item.nombre} ($${item.precio * item.cantidad})\n`;
     });
     
-    mensaje += `%0ATotal a pagar: $${precioTotal}%0A`;
-    mensaje += `%0A¿Me confirmás si tenés stock para coordinar la entrega por el centro o por Nueva Córdoba?`;
+    mensaje += `\nTotal a pagar: $${precioTotal}\n`;
+    mensaje += `\n¿Me confirmás si tenés stock para coordinar la entrega por el centro o por Nueva Córdoba?`;
 
-    const url = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
+    // Codificamos el mensaje para que sea un link válido
+    const url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
+    
+    // Abrimos el link
     window.open(url, "_blank");
-  };
+};
 
   return (
     <div className="min-h-screen bg-slate-50 p-6">
